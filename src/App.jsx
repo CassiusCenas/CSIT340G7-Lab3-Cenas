@@ -5,7 +5,7 @@ const Header = (props) => {
 const Part = (props) => {
   return (
     <p>
-      {props.part} {props.units} units
+      {props.part.name} {props.part.units} units
     </p>
   )
 }
@@ -13,15 +13,19 @@ const Part = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <Part part={props.part1} units={props.units1} />
-      <Part part={props.part2} units={props.units2} />
-      <Part part={props.part3} units={props.units3} />
+      <Part part={props.part1} />
+      <Part part={props.part2} />
+      <Part part={props.part3} />
     </div>
   )
 }
 
 const Total = (props) => {
-  return <p>Total units: {props.units1 + props.units2 + props.units3}</p>
+  return (
+    <p>
+      Total units: {props.part1.units + props.part2.units + props.part3.units}
+    </p>
+  )
 }
 
 const Footer = (props) => {
@@ -34,12 +38,18 @@ const Footer = (props) => {
 
 const App = () => {
   const course = 'CSIT340'
-  const part1 = 'IT317'
-  const units1 = 3
-  const part2 = 'IT365'
-  const units2 = 3
-  const part3 = 'CSIT321'
-  const units3 = 3
+  const part1 = {
+    name: 'IT317',
+    units: 3
+  }
+  const part2 = {
+    name: 'IT365',
+    units: 3
+  }
+  const part3 = {
+    name: 'CSIT321',
+    units: 3
+  }
   const name = 'Cassius L. Cenas'
   const code = 'CSIT340'
   const section = 'G7'
@@ -47,15 +57,8 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content
-        part1={part1}
-        units1={units1}
-        part2={part2}
-        units2={units2}
-        part3={part3}
-        units3={units3}
-      />
-      <Total units1={units1} units2={units2} units3={units3} />
+      <Content part1={part1} part2={part2} part3={part3} />
+      <Total part1={part1} part2={part2} part3={part3} />
       <Footer name={name} code={code} section={section} />
     </div>
   )
