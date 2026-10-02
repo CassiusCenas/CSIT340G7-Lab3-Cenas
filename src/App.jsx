@@ -1,27 +1,60 @@
-const Hello = (props) => {
+const Header = (props) => {
+  return <h1>{props.course}</h1>
+}
 
-  console.log(props)
+const Content = (props) => {
   return (
     <div>
       <p>
-
-        Hello {props.name}, you are {props.age} years old
+        {props.part1} {props.units1} units
+      </p>
+      <p>
+        {props.part2} {props.units2} units
+      </p>
+      <p>
+        {props.part3} {props.units3} units
       </p>
     </div>
   )
 }
 
-const App = () => {
+const Total = (props) => {
+  return <p>Total units: {props.units1 + props.units2 + props.units3}</p>
+}
 
-  const name = 'Peter'
-  const age = 10
+const Footer = (props) => {
+  return (
+    <footer>
+      {props.name} - {props.code} - {props.section}
+    </footer>
+  )
+}
+
+const App = () => {
+  const course = 'CSIT340'
+  const part1 = 'IT317'
+  const units1 = 3
+  const part2 = 'IT365'
+  const units2 = 3
+  const part3 = 'CSIT321'
+  const units3 = 3
+  const name = 'Cassius L. Cenas'
+  const code = 'CSIT340'
+  const section = 'G7'
 
   return (
     <div>
-      <h1>Greetings</h1>
-
-      <Hello name='Maya' age={26 + 10} />
-      <Hello name={name} age={age} />
+      <Header course={course} />
+      <Content
+        part1={part1}
+        units1={units1}
+        part2={part2}
+        units2={units2}
+        part3={part3}
+        units3={units3}
+      />
+      <Total units1={units1} units2={units2} units3={units3} />
+      <Footer name={name} code={code} section={section} />
     </div>
   )
 }
